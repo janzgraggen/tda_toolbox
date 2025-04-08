@@ -125,7 +125,7 @@ def dipha(neuron_file, k=2, output=None, forced=False):
 
     with open(output, 'rb') as f:
         dipha_identifier, = unpack('<q', f.read(calcsize('q')))
-        assert dipha_identifier == 8067171840L, "Wrong dipha file"
+        assert dipha_identifier == 8067171840, "Wrong dipha file"
         diagram_identifier, = unpack('<q', f.read(calcsize('q')))
         assert diagram_identifier == 2, "input is not a persistence_diagram file"
         num_pairs, = unpack('<q', f.read(calcsize('q')))
