@@ -28,12 +28,12 @@ def compute_barcodes(dataset, output=None, forced=False, feature='radial_distanc
     barcodes = []
 
     if forced or not output or not os.path.isfile(output):
-        print "Loading neurons"
+        print ("Loading neurons")
 
         for filename in dataset:
             neurons.append(tmd.io.load_neuron(filename))
 
-        print "Computing barcodes"
+        print ("Computing barcodes")
 
         for neuron in neurons:
             barcode = []
@@ -66,7 +66,7 @@ def compute_distances(dataset, output=None, output_barcode=None, feature='radial
         barcodes = compute_barcodes(dataset, output=output_barcode, forced=forced,
                                     neurite_list=neurite_list, feature=feature, **kwds)
 
-        print "Computing distances"
+        print("Computing distances")
 
         D = np.zeros((len(barcodes), len(barcodes)))
 
@@ -110,14 +110,14 @@ class Distance:
 
     def compute_barcodes(self):
         if self.forced or not self.output_barcode or not os.path.isfile(self.output_barcode):
-            print "Loading neurons"
+            print("Loading neurons")
 
             filenames = [os.path.join(data.neurons_location, f.replace('\\', os.path.sep)) for f in data.datasets[self.dataset]]
 
             for filename in filenames:
                 self.neurons.append(tmd.io.load_neuron(filename))
 
-            print "Computing barcodes"
+            print("Computing barcodes")
 
             self.barcodes = []
 
@@ -144,7 +144,7 @@ class Distance:
         if self.forced or not self.output or not os.path.isfile(self.output):
             barcodes = self.transform_barcodes() if self.barcodes_t is None else self.barcodes_t
 
-            print "Computing distances"
+            print("Computing distances")
 
             D = np.zeros((len(barcodes), len(barcodes)))
 
