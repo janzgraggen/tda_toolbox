@@ -112,7 +112,7 @@ def dipha(neuron_file, k=2, output=None, forced=False):
         D = squareform(pdist(points))
 
         with open(distance_matrix, 'wb') as f:
-            f.write(pack('<qqq', 8067171840L, 7L, len(D)))
+            f.write(pack('<qqq', 8067171840, 7, len(D)))
             f.writelines([pack('<' + 'd' * len(row), *row) for row in D])
 
         args = ["./dipha", "--upper_dim", str(k), distance_matrix, "/tmp/filtration.txt"]
